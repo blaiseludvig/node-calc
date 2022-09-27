@@ -25,12 +25,12 @@ body {
 }
 
 #body-wrap {
-  max-width: 67vh;
-  margin: 0 auto;
+  display: grid;
+  justify-content: center;
   background-color: var(--main-bgcolor);
   font-family: "Open Sans", sans-serif;
   font-size: 7vh;
-  line-heightr: 1;
+  line-height: 1;
   padding: 1vh 1vh;
 }
 
@@ -38,7 +38,7 @@ body {
   display: flex;
   align-items: center;
   flex-direction: row-reverse;
-  padding-right: 0.7rem;
+  padding-right: 5vh;
   height: 14vh;
   font-size: 1.5em;
 }
@@ -93,7 +93,6 @@ body {
   font-weight: 600;
 }
 
-
 #calc-zero-wrap {
   justify-content: flex-start;
   grid-column: span 2;
@@ -101,6 +100,30 @@ body {
 
 #calc-zero {
   width: 14vh;
+}
+
+
+
+@media only screen and (max-width:67vh) {
+  #display-wrap {
+    height: 20vw;
+    padding-right: 7.142vw;
+  }
+
+  #body-wrap {
+    padding: 4vw 4vw;
+    font-size: 10vw;
+  }
+
+  #main-grid {
+    grid-template-columns: repeat(4, 20vw);
+    gap: 4vw;
+  }
+
+  .grid-cell:nth-child(-n + 3) {
+    height: 20vw;
+  }
+
 }
 
 /* open-sans-cyrillic-ext-400-normal*/
