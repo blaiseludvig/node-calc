@@ -21,11 +21,12 @@ body {
 
   background-color: var(--main-bgcolor);
   color: var(--bright-font);
+  font-size: 7vh;
 }
 
 #body-wrap {
-  display: grid;
-  justify-content: center;
+  max-width: 67vh;
+  margin: 0 auto;
   background-color: var(--main-bgcolor);
   font-family: "Open Sans", sans-serif;
   font-size: 7vh;
@@ -37,7 +38,7 @@ body {
   display: flex;
   align-items: center;
   flex-direction: row-reverse;
-  padding-right: 5vh;
+  padding-right: 0.7rem;
   height: 14vh;
   font-size: 1.5em;
 }
