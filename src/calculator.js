@@ -113,6 +113,11 @@ function type_equals() {
     return;
   }
 
+  if (lastIsOperator()) {
+    animateCSS(this, "shakeX");
+    return;
+  }
+
   if (display.textContent == MINUS_SIGN || display.textContent == "+") {
     animateCSS(this, "shakeX");
     return;
