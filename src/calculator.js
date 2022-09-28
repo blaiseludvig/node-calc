@@ -62,12 +62,21 @@ function lastIsInteger() {
   return !expression().split(RegExp(op_regex, "g")).at(-1).includes(".");
 }
 
+function lastIsOperator() {
+  return operators.includes(expression().at(-1));
+}
+
 function type_op() {
   if (this.textContent == MINUS_SIGN || this.textContent == "+") {
     if (displayIsInitial()) {
       display.textContent = this.textContent;
       return;
     }
+  }
+
+  if (lastIsOperator()) {
+    display.textContent = expression().substring(0, expression().length - 1) + this.textContent;
+    return;
   }
 
   if (lastIsNumber()) {
