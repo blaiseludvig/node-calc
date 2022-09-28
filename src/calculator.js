@@ -66,6 +66,18 @@ function lastIsOperator() {
   return operators.includes(expression().at(-1));
 }
 
+function lastNumber() {
+  let numbers = expression().split(RegExp(op_regex, "g"));
+
+  if (!numbers.at(-1) == "") {
+    return numbers.at(-1);
+  }
+  else {
+    return numbers.at(-2);
+  }
+
+}
+
 function type_op() {
   if (this.textContent == MINUS_SIGN || this.textContent == "+") {
     if (displayIsInitial()) {
@@ -93,6 +105,23 @@ function type_number() {
   }
 
   display.textContent += n;
+}
+
+function type_percent() {
+  if (displayIsInitial()) {
+    return;
+  }
+
+  // from https://stackoverflow.com/a/3561711
+  function escapeRegex(string) {
+    return string.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+  }
+  
+  if (lastIsNumber()) {
+    // from https://stackoverflow.com/a/73616013
+    display.textContent = expression().replace(RegExp(`(${escapeRegex(lastNumber())})(?!.*\\1)`), lastNumber() / 100);
+  }
+
 }
 
 function type_decimal_sep() {
@@ -158,6 +187,8 @@ function type_AC() {
 
 export default function init() {
   buttons[layout.indexOf("AC")].addEventListener("click", type_AC);
+
+  buttons[layout.indexOf("percent")].addEventListener("click", type_percent);
 
   for (let i = 0; i < 10; i++) {
     buttons[layout.indexOf(`n${i}`)].addEventListener("click", type_number);
