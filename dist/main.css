@@ -35,12 +35,19 @@ body {
 }
 
 #display-wrap {
+  max-width: 63vh;
   display: flex;
   align-items: center;
-  flex-direction: row-reverse;
+  justify-content: flex-end;
   padding-right: 5vh;
   height: 14vh;
   font-size: 1.5em;
+}
+
+#display{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 #main-grid {
@@ -106,6 +113,7 @@ body {
 
 @media only screen and (max-width:67vh) {
   #display-wrap {
+    max-width: 92vw;
     height: 20vw;
     padding-right: 7.142vw;
   }
